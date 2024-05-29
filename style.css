@@ -10,11 +10,12 @@ body{
 }
 
 input{
-   margin:30px 0px 30px 10px;
+    margin:15px 0px 15px 10px;
+  
    padding-left: 10px;
-   font-size: 20px;
-   height: 35px;
-   width: 40vw;
+   font-size: 18px;
+   height: 25px;
+   width: 25vw;
    /* border: 3px solid black; */
    border-radius:25px ;
    -webkit-border-radius:25px ;
@@ -25,7 +26,7 @@ input{
 
 button{
     height: 30px;
-    width: 70px;
+    width: 80px;
     color: white;
    
     border-radius: 20px;
@@ -40,19 +41,15 @@ button{
 .movieinfo{
     display: flex;
     flex-direction: row;
-    height: 900px; ;
+    height: 900px; 
+    justify-content: space-evenly;
 }
 .movieposter{
-    margin-top: 10px;
+   margin-top: 70px;
    margin-left: 50px;
    border-radius: 15px;
    height: 750px;
-   width: 500px;
-   
-   -webkit-border-radius: 15px;
-   -moz-border-radius: 15px;
-   -ms-border-radius: 15px;
-   -o-border-radius: 15px;
+   width: 400px;
 }
 .moviediscription{
     /* height: 750px; */
@@ -63,13 +60,14 @@ button{
     height: 250px;
   display: flex;
   flex-direction: row;
+  
   justify-content: center;
 }
 iframe{
     height: 250px;
     width: 500px;
-    border: 2px solid rebeccapurple;
-    background-image: url("https://i.ibb.co/GQW4z5n/not-found.jpg");
+    
+    
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -127,8 +125,9 @@ h1{
 
 .mainimage{
     height: 550px;
-    width: 500px;
+    width: 400px;
     /* border: #000000; */
+    border-radius:20px 20px 0px 0px ;
 }
 .namerating{
     height: 100px;
@@ -196,13 +195,13 @@ p{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: repeat(2,1fr);
-    row-gap: 50px;
+    row-gap: 30px;
 }
 .trending{
    border-radius: 10px;
-   
+
    height: 400px;
-   width: 300px;
+   width: 270px;
    -webkit-border-radius: 10px;
    -moz-border-radius: 10px;
    -ms-border-radius: 10px;
@@ -223,7 +222,8 @@ p{
 }
 .trending img{
     height: 350px;
-    width: 300px;
+    width: 270px;
+    border-radius:20px 20px 0px 0px ;
 }
 .rating1{
     background-color: cornflowerblue;
@@ -275,36 +275,66 @@ h3{
 .header{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    background-color: #97aedc;
+    background-color: #26282c;
 
 }
 
 
 .differentsection a{
-    margin:30px 0px 30px 10px;
+    margin:15px 0px 15px 10px;
     font-size: 20px;
-    height: 40px;
+    height: 25px;
     width: 200px;
     justify-content: center;
     text-align: center;
-    color: #000000;
+    color: #fffcfc;
     text-decoration: none;
-    
-    border-radius:5px ;
-   
+    background-color:  rgb(47, 120, 188);
+    border-radius:20px ;
+    -webkit-border-radius:20px ;
+    -moz-border-radius:20px ;
+    -ms-border-radius:20px ;
+    -o-border-radius:20px ;
 }
 .differentsection {
-    margin:30px 0px 30px 10px;
+    margin:15px 0px 15px 10px;
     font-size: 20px;
-    height: 40px;
+    height: 25px;
     width: 200px;
     justify-content: center;
     text-align: center;
-    color: #000000;
+    color: #fffbfb;
     text-decoration: none;
+    background-color:  rgb(47, 120, 188);
+    border-radius:20px ;   
     
-    border-radius:5px ;
-   
+}
+
+.genrecontainer{
+    display: grid;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(2,1fr);
+    gap: 5px;
+    margin: 20px 200px 0px 200px;
+
+    
+}
+.genre{
+    height: 30px;
+    width: 140px;
+    border: 2px solid rgb(215, 62, 35);
+    border-radius: 20px;
+    background-color: rgb(226, 116, 20);
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    align-content: center;
+    justify-content: center;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }

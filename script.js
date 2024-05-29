@@ -53,6 +53,7 @@ if(roftrailer.results.length>0)
                          var movietrailerkey=roftrailer.results[i].key
                        document.querySelector("iframe").src=`https://www.youtube.com/embed/${movietrailerkey}?`
 	            }
+
         }
 }
 	
@@ -84,7 +85,7 @@ for (let i = 0; i < elements.length; i++) {
 		document.querySelector(".namerating h2").innerHTML=r.results[i].title;
 		
 	
-
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 
 
 	});
@@ -120,7 +121,7 @@ async function nowplaying(){
     const response= await fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=ed37e133d0447974c7f53d47a4de1d82',options)
     const r=await response.json()
     console.log(r);
-
+genre();
 create(r.results);
 
 let elements = document.getElementsByClassName("trending");
@@ -142,7 +143,8 @@ for (let i = 0; i < elements.length; i++) {
 		document.querySelector(".namerating h2").innerHTML=r.results[i].title;
 		
 	
-
+       // Scroll to the top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
 
 
 	});
@@ -188,7 +190,8 @@ elements[i].addEventListener("click", () => {
     document.querySelector(".dateandlan h3").innerHTML=r.results[i].original_language;
     document.querySelector(".rating").innerHTML=r.results[i].vote_average;
     document.querySelector(".namerating h2").innerHTML=r.results[i].title;
-    
+    // Scroll to the top
+	window.scrollTo({ top: 0, behavior: 'smooth' });
 
 });
 }
@@ -208,7 +211,8 @@ function takethedata(){
 	
 
 }
-  
+
+
 
 
 
@@ -225,13 +229,16 @@ function create(data)
          if(data.length>=1)
 			{
 		     var nameofmovie=data[i].title
+			 var round=data[i].vote_average
+			 var roundoff=round.toFixed(2);
 		     const movielement=document.createElement('div')
 		     movielement.classList.add('trending')
 		     movielement.innerHTML=`
+
 		    <img src='https://image.tmdb.org/t/p/original/${data[i].poster_path}' alt="">
 		    <div class="movieinformation">
 			       <h3>${nameofmovie}</h3>
-			       <div class="rating1">${data[i].vote_average}</div>
+			       <div class="rating1">${roundoff}</div>
 	        </div>`
              
 			document.querySelector('.trendingcontainer').appendChild(movielement);
@@ -326,8 +333,10 @@ function makebody(){
                     <div class="differentsection"><a href="index.html">Now-Playing</a></div>
 					<div class="differentsection" onclick="trending()">Trending</div>
 					
-                    <input type="search" placeholder="Search Movie and TV series name">
-                    <button onclick="takethedata()">search</button>
+					<div>
+					<input type="search" placeholder="Search Movie ">
+					<button onclick="takethedata()">search</button>
+				 </div>
              </div>
 			 <div class="movieinfo">
              <div class="movieposter">
@@ -363,25 +372,75 @@ function makebody(){
              </div>
 
 
-        </div>`
+        </div>
+		`
 		document.querySelector('#main').appendChild(movielement);
 }
 
 
 
-//trending section
+// //                         Genre api
+
+function genre(){
+	async function genre(){
+		    const response= await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=ed37e133d0447974c7f53d47a4de1d82',options)
+		    const genre=await response.json()
+		    // console.log(genre);
+ 
+			creategenre(genre.genres);
 
 
-async function trending(){
+			let elements = document.getElementsByClassName("genre");
+			for (let i = 0; i < elements.length; i++) {
+				elements[i].addEventListener("click", () => {
+					console.log(genre.genres[i].id); // Accessing the element at index i
+                    makingagenrebody(genre.genres[i].id)
+					
+			
+				});
+			}
 
-		const response= await fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=ed37e133d0447974c7f53d47a4de1d82',options)
-		const r=await response.json()
-		console.log(r);
-		// console.log("hi")
+	}
+	genre()
 
-		create(r.results);
-		let elements = document.getElementsByClassName("trending");
 
+	
+}
+
+
+function creategenre(data)
+{
+	
+
+	document.querySelector('.genrecontainer').innerHTML="";
+  
+	for(var i=0;i<data.length;i++)
+		{
+         if(data.length>=1)
+			{
+		    //  var genreid=data[i].id;
+			 var genrename=data[i].name
+		     const movielement=document.createElement('div')
+		     movielement.classList.add('genre')
+		     movielement.innerHTML=`${genrename}`
+             
+			document.querySelector('.genrecontainer').appendChild(movielement);
+		    }
+		
+	    }	
+
+}
+
+
+
+
+async function makingagenrebody(idofgenre){
+	const response= await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=ed37e133d0447974c7f53d47a4de1d82&with_genres=${idofgenre} `,options)
+	const r=await response.json()
+	console.log(r);
+	create(r.results);
+
+let elements = document.getElementsByClassName("trending");
 for (let i = 0; i < elements.length; i++) {
 	elements[i].addEventListener("click", () => {
 		console.log(r.results[i]); // Accessing the element at index i
@@ -398,12 +457,8 @@ for (let i = 0; i < elements.length; i++) {
 		document.querySelector(".dateandlan h3").innerHTML=r.results[i].original_language;
 		document.querySelector(".rating").innerHTML=r.results[i].vote_average;
 		document.querySelector(".namerating h2").innerHTML=r.results[i].title;
-		
-	
-
-
-
+// Scroll to the top
+window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
 }
-	
 }
