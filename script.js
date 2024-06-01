@@ -338,6 +338,7 @@ function makebody(){
 					<button onclick="takethedata()">search</button>
 				 </div>
              </div>
+
 			 <div class="movieinfo">
              <div class="movieposter">
                 <img src="" alt="" class="mainimage">
@@ -351,7 +352,7 @@ function makebody(){
 
 
              <div class="moviediscription">
-                <h1>DECRIPTION</h1>
+                <h1>DISCRIPTION</h1>
                 <p> </p>
                 <div class="dateandlan">
                     <div class="date">DATE:- </div>
